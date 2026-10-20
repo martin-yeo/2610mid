@@ -1,0 +1,310 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>웹개발기초 중간시험 대비</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: 시험지와 같은 figmablue 계열. 짙은 파랑 머리 띠 + 고정 탭 + 한 단 본문(최대 760px), 코드 줄은 코드와 설명 두 칸 */
+:root {
+  --bg: #F7F9FC;
+  --paper: #FFFFFF;
+  --ink: #16202E;
+  --muted: #5A6577;
+  --line: #DCE3EE;
+  --deep: #2F5597;
+  --blue: #4472C4;
+  --wash: #E8F0FA;
+  --chip: #F0F4FA;
+  --mark: #C0492B;
+  --ok: #2E7D4F;
+  --code-bg: #F3F6FB;
+  --code-tag: #2F5597;
+  --code-attr: #8A4B00;
+  --code-str: #1E7A4A;
+  --code-com: #8792A3;
+  --band-ink: #FFFFFF;
+  --band-sub: #C1D0E8;
+  --accent-ink: #2F5597;
+  --on-accent: #FFFFFF;
+  --f-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-code: "JetBrains Mono", Consolas, "D2Coding", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1520; --paper: #161E2B; --ink: #E6ECF5; --muted: #9AA6B8; --line: #2A3546;
+    --deep: #2B4F8C; --blue: #7FA6E6; --wash: #1C2940; --chip: #1B2433; --mark: #F2A58F; --ok: #6FCF97;
+    --code-bg: #121A26; --code-tag: #8FB4F0; --code-attr: #E8B26A; --code-str: #7FD1A0; --code-com: #6F7B8E;
+    --band-ink: #FFFFFF; --band-sub: #C1D0E8; --accent-ink: #A9C3EE; --on-accent: #0F1520; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1520; --paper: #161E2B; --ink: #E6ECF5; --muted: #9AA6B8; --line: #2A3546;
+  --deep: #2B4F8C; --blue: #7FA6E6; --wash: #1C2940; --chip: #1B2433; --mark: #F2A58F; --ok: #6FCF97;
+  --code-bg: #121A26; --code-tag: #8FB4F0; --code-attr: #E8B26A; --code-str: #7FD1A0; --code-com: #6F7B8E;
+  --band-ink: #FFFFFF; --band-sub: #C1D0E8; --accent-ink: #A9C3EE; --on-accent: #0F1520; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15.5px; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--deep); }
+.wrap { max-width: 780px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.band { background: var(--deep); color: var(--band-ink); }
+header.band .wrap { padding-block: 36px 30px; display: grid; gap: 10px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; color: var(--band-sub); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.bar { width: 48px; height: 5px; background: #F2A58F; }
+h1 { margin: 0; font-size: clamp(28px, 6vw, 42px); font-weight: 900; line-height: 1.2; text-wrap: balance; }
+.sub { margin: 0; color: var(--band-sub); font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.chips span { font-size: 13px; border: 1px solid rgba(255,255,255,.35); padding: 3px 10px; border-radius: 4px; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+nav.tabs a { flex: none; padding: 12px 12px; font-size: 14px; font-weight: 700; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; }
+nav.tabs a:hover, nav.tabs a:focus-visible { color: var(--accent-ink); }
+nav.tabs a.on { color: var(--blue); border-bottom-color: var(--blue); }
+main .wrap { padding-block: 8px 64px; }
+section.sec { padding-top: 34px; scroll-margin-top: 56px; }
+h2 { font-size: 22px; font-weight: 900; margin: 0 0 6px; display: flex; align-items: baseline; gap: 10px; text-wrap: balance; }
+h2 .no { font-family: var(--f-code); font-size: 13px; font-weight: 600; color: var(--on-accent); background: var(--blue); padding: 2px 8px; border-radius: 3px; }
+.lead { color: var(--muted); margin: 0 0 16px; }
+h3 { font-size: 17px; margin: 0; font-weight: 800; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 18px 18px; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.tbl { overflow-x: auto; }
+th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+thead th { background: var(--wash); color: var(--accent-ink); font-weight: 700; border-top: 2px solid var(--blue); border-bottom: 2px solid var(--blue); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 2px solid var(--blue); }
+td.num { font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; }
+caption { caption-side: top; text-align: left; font-weight: 700; font-size: 14px; padding: 0 0 6px; }
+code, .mono { font-family: var(--f-code); font-size: .92em; }
+:not(pre) > code { background: var(--chip); padding: 1px 5px; border-radius: 3px; }
+.note { font-size: 14px; color: var(--muted); }
+/* 시험 구성 */
+.exam { display: grid; gap: 14px; }
+#examRows td:first-child { white-space: nowrap; }
+.warn { border-left: 4px solid var(--blue); background: var(--wash); padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 14.5px; }
+/* 3시간 계획 */
+.plan { display: grid; gap: 12px; counter-reset: step; }
+.step { display: grid; grid-template-columns: 74px 1fr; gap: 14px; align-items: start; }
+.step .time { font-family: var(--f-code); font-weight: 600; color: var(--blue); font-size: 15px; padding-top: 2px; }
+.step ul { margin: 6px 0 0; padding-left: 0; list-style: none; display: grid; gap: 6px; }
+.step li label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+.step input[type=checkbox] { margin-top: 6px; accent-color: var(--blue); width: 16px; height: 16px; flex: none; }
+.step li input:checked + span { color: var(--muted); text-decoration: line-through; }
+/* 장 요약 */
+.chapnav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.chapnav a { font-size: 13px; text-decoration: none; color: var(--accent-ink); background: var(--chip); border: 1px solid var(--line); padding: 3px 10px; border-radius: 4px; }
+.chap { display: grid; gap: 12px; padding-top: 20px; scroll-margin-top: 60px; }
+.chap .head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; border-bottom: 2px solid var(--blue); padding-bottom: 6px; }
+.chap .part { font-family: var(--f-code); font-size: 12px; color: var(--muted); }
+.chap .lead { margin: 0; }
+ul.points { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 7px; }
+ul.points li { position: relative; padding-left: 16px; }
+ul.points li::before { content: ""; position: absolute; left: 0; top: .72em; width: 6px; height: 6px; background: var(--blue); }
+.pairs { display: grid; gap: 8px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--paper); }
+.pair .a, .pair .b { padding: 8px 12px; font-weight: 700; font-size: 14.5px; }
+.pair .a { background: var(--chip); border-right: 1px solid var(--line); }
+.pair .d { grid-column: 1 / -1; padding: 8px 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+.label { font-size: 12px; letter-spacing: .06em; font-weight: 700; color: var(--muted); margin: 4px 0 -4px; }
+/* 코드 */
+.codetabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.codetabs button, .tool button { font: inherit; font-size: 13.5px; font-weight: 700; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+.codetabs button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: var(--on-accent); }
+.tool { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+.codebox { background: var(--code-bg); border: 1px solid var(--line); border-left: 4px solid var(--blue); border-radius: 0 6px 6px 0; overflow-x: auto; }
+.cl { display: grid; grid-template-columns: 2.4em minmax(0, max-content) minmax(220px, 1fr); gap: 0 14px; padding: 1px 14px 1px 6px; align-items: baseline; }
+.cl .ln { font-family: var(--f-code); font-size: 12px; color: var(--code-com); text-align: right; user-select: none; }
+.cl pre { margin: 0; font-family: var(--f-code); font-size: 13.5px; line-height: 1.75; white-space: pre; }
+.cl .nt { font-size: 13px; color: var(--muted); line-height: 1.55; padding: 3px 0; }
+.cl.has { background: color-mix(in srgb, var(--blue) 7%, transparent); }
+.t-tag { color: var(--code-tag); font-weight: 600; } .t-attr { color: var(--code-attr); } .t-str { color: var(--code-str); } .t-com { color: var(--code-com); font-style: italic; } .t-prop { color: var(--code-attr); } .t-sel { color: var(--code-tag); font-weight: 600; }
+.hide-notes .cl .nt { visibility: hidden; }
+.blur-code .cl pre { filter: blur(5px); }
+.blur-code .cl pre:hover, .blur-code .cl pre:focus { filter: none; }
+@media (max-width: 680px) { .cl { grid-template-columns: 2.4em minmax(0, 1fr); } .cl .nt { grid-column: 2; padding: 0 0 6px; } .cl .nt:empty { display: none; } }
+/* 서술형 */
+.essays { display: grid; gap: 12px; }
+.essay h3 { display: flex; gap: 10px; align-items: baseline; }
+.essay h3 .k { font-family: var(--f-code); font-size: 12.5px; color: var(--blue); }
+.essay p { margin: 6px 0 0; }
+.essay .ref { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.essay button { margin-top: 10px; font: inherit; font-size: 13.5px; font-weight: 700; padding: 5px 12px; border-radius: 4px; border: 1px solid var(--blue); background: transparent; color: var(--blue); cursor: pointer; }
+.essay ul { margin: 10px 0 0; padding-left: 0; list-style: none; display: grid; gap: 6px; }
+.essay ul li { padding-left: 16px; position: relative; }
+.essay ul li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border: 1.5px solid var(--blue); }
+/* 확인 카드 */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+.qc { text-align: left; font: inherit; color: inherit; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 14px; cursor: pointer; display: grid; gap: 8px; min-height: 110px; align-content: start; }
+.qc:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.qc .q { font-weight: 700; }
+.qc .a { color: var(--accent-ink); font-weight: 700; border-top: 1px dashed var(--line); padding-top: 8px; }
+.qc .r { font-size: 12.5px; color: var(--muted); }
+.qc .tap { font-size: 12.5px; color: var(--muted); }
+.qc.open .tap { display: none; }
+.score { font-size: 14px; color: var(--muted); }
+footer { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 18px; font-size: 13.5px; color: var(--muted); display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (max-width: 520px) { .step { grid-template-columns: 1fr; gap: 2px; } h2 { font-size: 20px; } }
+</style>
+
+<header class="band">
+  <div class="wrap">
+    <div class="eyebrow"><span>웹개발기초 2026-2</span><span>11, 12분반 공통</span></div>
+    <div class="bar" aria-hidden="true"></div>
+    <h1>중간시험 대비 노트</h1>
+    <p class="sub">교재 Part 1~2(1~7장 HTML, CSS)와 6, 7주차 수업 실습 코드를 3시간 안에 정리하는 순서와 핵심 요약입니다.</p>
+    <div class="chips"><span>괄호 채우기</span><span>O/X</span><span>코드 완성</span><span>서술형</span></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="쪽 안 이동">
+  <div class="wrap" id="tabs">
+    <a href="#exam">시험 구성</a><a href="#plan">3시간 계획</a><a href="#summary">핵심 요약</a><a href="#code">실습 코드</a><a href="#essay">서술형</a><a href="#cards">확인 카드</a>
+  </div>
+</nav>
+<main>
+  <div class="wrap">
+    <section class="sec" id="exam">
+      <h2><span class="no">01</span>시험 구성</h2>
+      <p class="lead">두 분반의 범위, 유형, 배점은 같고 문항은 분반마다 다릅니다. 모든 문항은 교재 내용과 6, 7주차 수업 실습 코드에서 나옵니다.</p>
+      <div class="exam">
+        <div class="tbl card" style="padding:0">
+          <table>
+            <thead><tr><th>유형</th><th>문항 수</th><th>배점</th><th>대비 방법</th></tr></thead>
+            <tbody id="examRows"></tbody>
+          </table>
+        </div>
+        <div class="warn">코드 답안은 철자와 기호까지 정확해야 합니다. <code>#</code>, <code>:</code>, <code>@</code>, <code>-</code>, 따옴표 하나도 답의 일부입니다.</div>
+      </div>
+    </section>
+
+    <section class="sec" id="plan">
+      <h2><span class="no">02</span>3시간 계획</h2>
+      <p class="lead">아래 순서대로 하면 3시간 안에 범위 전체를 한 번 돌고 서술형 준비까지 마칠 수 있습니다. 체크한 항목은 이 기기에 저장됩니다.</p>
+      <div class="plan" id="planList"></div>
+    </section>
+
+    <section class="sec" id="summary">
+      <h2><span class="no">03</span>핵심 요약</h2>
+      <p class="lead">장마다 꼭 알아야 할 사실만 모았습니다. 문장마다 굵게 쓴 용어의 철자를 손으로 한 번씩 써 보세요.</p>
+      <div class="chapnav" id="chapNav"></div>
+      <div id="chapters"></div>
+    </section>
+
+    <section class="sec" id="code">
+      <h2><span class="no">04</span>6, 7주차 실습 코드</h2>
+      <p class="lead">코드 완성 문제는 이 네 파일에서 나옵니다. 각 줄이 하는 일을 말할 수 있으면 됩니다. 다 읽었으면 "코드 가리기"를 켜고 설명만 보며 코드를 떠올려 보세요.</p>
+      <div class="codetabs" id="codeTabs" role="group" aria-label="파일 선택"></div>
+      <div class="tool">
+        <button type="button" id="toggleNotes" aria-pressed="false">설명 숨기기</button>
+        <button type="button" id="toggleBlur" aria-pressed="false">코드 가리기</button>
+        <span class="note" id="codeHint"></span>
+      </div>
+      <div class="codebox" id="codeBox"></div>
+    </section>
+
+    <section class="sec" id="essay">
+      <h2><span class="no">05</span>서술형 후보</h2>
+      <p class="lead">서술형은 아래 후보 가운데에서 나옵니다. 핵심어를 보기 전에 먼저 개요를 써 보고, 핵심어와 비교해 빠진 것을 채우세요. 교재 용어로, 짧은 코드 예를 곁들이면 좋습니다.</p>
+      <div class="essays" id="essays"></div>
+    </section>
+
+    <section class="sec" id="cards">
+      <h2><span class="no">06</span>빠른 확인 카드</h2>
+      <p class="lead">카드를 누르면 답이 보입니다. 바로 떠오르지 않은 카드는 핵심 요약으로 돌아가 다시 읽으세요.</p>
+      <div class="tool"><button type="button" id="openAll">모두 펼치기</button><button type="button" id="closeAll">모두 접기</button><span class="score" id="cardScore"></span></div>
+      <div class="cards" id="cardList"></div>
+    </section>
+
+    <footer>
+      <div>교재: 『코딩 자율학습 HTML + CSS + 자바스크립트』(김기수, 길벗) 온라인판 <span class="mono">thebook.io/080313</span>. 절 번호는 교재 기준입니다.</div>
+      <div>질문은 이메일로 보내 주세요: <span class="mono" style="user-select:all">sangsooyeo@gmail.com</span> (공학관 D325호)</div>
+    </footer>
+  </div>
+</main>
+
+<script type="application/json" id="data">{"exam": [{"type": "Ⅰ 괄호 채우기", "n": "20", "pt": "각 1점", "how": "용어, 태그 이름, 속성 이름, 값, 기호를 정확한 철자로 씁니다. 핵심 요약의 굵은 용어를 손으로 한 번씩 써 보세요."}, {"type": "Ⅱ O/X", "n": "20", "pt": "각 1점", "how": "교재 사실의 한 곳만 바꿔 틀리게 만든 문장을 가려냅니다. 핵심 요약의 \"헷갈리기 쉬운 짝\"을 꼭 보세요."}, {"type": "Ⅲ 코드 완성", "n": "20", "pt": "각 2점", "how": "6, 7주차 실습 코드의 빈칸에 태그 이름, 속성 이름, 속성값을 씁니다. 코드를 보지 않고 다시 써 보는 연습이 가장 좋습니다."}, {"type": "Ⅳ 서술형", "n": "2", "pt": "각 10점", "how": "아래 서술형 후보 가운데에서 나옵니다. 교재 용어로 설명하고, 짧은 코드 예나 계산, 해석을 곁들입니다."}, {"type": "합계", "n": "62", "pt": "100점", "how": ""}], "plan": [{"time": "60분", "title": "핵심 요약 읽기와 빠른 확인 카드", "do": ["1장~5장 핵심 요약을 읽고 **굵은 용어**를 손으로 한 번씩 써 보세요.", "6장, 7장 핵심 요약과 표를 읽고 값의 철자(`space-between`, `border-box` 등)를 확인하세요.", "헷갈리기 쉬운 짝을 가리고 둘의 차이를 소리 내어 말해 보세요.", "빠른 확인 카드 20장을 풀고, 틀린 카드는 적힌 교재 절을 다시 읽으세요."]}, {"time": "60분", "title": "6, 7주차 코드를 보지 않고 다시 쓰기", "do": ["코드 가리기를 누르고 6주차 index.html의 `head`와 카드 구조를 빈 종이에 다시 써 보세요.", "6주차 style.css의 `.card`, `.badge`, `.card:hover` 규칙을 값까지 써 보세요.", "7주차 index.html의 `header`, `nav`, `main`, `section`, `article`, `footer` 뼈대를 순서대로 써 보세요.", "7주차 style.css의 플렉스(`.top`, `nav ul`), 그리드(`.board`), 미디어 쿼리 줄을 정확히 써 보세요.", "다시 쓴 코드를 원본과 맞춰 보고, 틀린 태그, 속성, 값에 표시한 뒤 그 줄의 설명을 읽으세요."]}, {"time": "60분", "title": "서술형 후보 개요 쓰기", "do": ["서술형 후보 8개의 질문을 읽고, 핵심어를 보기 전에 떠오르는 개념을 먼저 적어 보세요.", "핵심어 보기를 눌러 빠진 개념을 채우세요.", "후보마다 3~5줄 개요와 짧은 코드 예를 하나씩 써 보세요.", "box-sizing 너비 계산과 미디어 쿼리의 이상, 이하 구분은 숫자를 바꿔 직접 계산해 보세요.", "마지막 10분은 빠른 확인 카드를 한 번 더 넘기며 마무리하세요."]}], "chapters": [{"id": "ch1", "part": "Part 1", "title": "1장 Hello, HTML + CSS + 자바스크립트", "lead": "개발 환경을 준비하는 장입니다. 도구 이름만 가볍게 확인하세요.", "points": ["교재는 코드 에디터로 **VSCode**(비주얼 스튜디오 코드)를, 실행 브라우저로 크롬을 씁니다.", "확장 프로그램 **Live Server**로 저장한 HTML을 브라우저에서 바로 확인하며, 첫 HTML 문서의 파일명은 `index.html`로 짓습니다."], "tables": [], "pairs": [], "short": "1장"}, {"id": "ch2", "part": "Part 1", "title": "2장 HTML 문서 작성을 위한 기본 내용 살펴보기", "lead": "태그, 속성, 요소라는 용어와 HTML 문서의 기본 구조를 익히는 장입니다. 특히 `head` 안 태그의 역할을 정확히 외우세요.", "points": ["**태그**는 HTML 문법을 이루는 가장 작은 단위이며, `<태그명>`처럼 홑화살괄호 안에 태그명을 씁니다.", "**속성**은 태그에 의미나 기능을 보충하며 `<태그명 속성명=\"속성값\">` 형식으로 씁니다. 속성은 태그 없이 혼자 쓸 수 없습니다.", "시작 태그, 콘텐츠, 종료 태그를 합쳐 **요소**라고 하며, 종료 태그는 태그명 앞에 `/`가 붙습니다.", "`<br>`처럼 콘텐츠가 없는 태그를 **빈 태그**라고 하며, HTML5부터는 `<br/>`처럼 슬래시를 넣지 않아도 됩니다.", "HTML 주석은 `<!-- 주석 내용 -->`으로 씁니다. 소스 보기로 누구나 볼 수 있으므로 중요한 정보를 적으면 안 됩니다.", "HTML 문서의 기본 구조는 DTD, `html`, `head`, `body`이며, 맨 처음에 쓰는 `<!DOCTYPE html>`은 문서를 HTML5 형식으로 해석하게 합니다.", "`html` 태그는 문서의 시작과 끝을 뜻하므로 다른 태그는 모두 그 안에 쓰고, `<html lang=\"ko\">`로 주 언어를 지정합니다.", "`head`는 문서 정보인 **메타데이터**를 정의하는 영역이며 `meta`, `title`, `link`, `style`, `script` 태그를 주로 넣습니다.", "`<meta charset=\"UTF-8\">`은 문서에서 쓰는 문자 집합을 정하며, 요즘은 많은 언어를 담을 수 있는 UTF-8을 씁니다.", "`<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">`은 화면을 접속한 기기의 너비에 맞추는 메타데이터입니다.", "`title`은 문서 제목을 정하며, 모든 문서에 반드시 1개를 넣고 문서끼리 제목이 겹치지 않게 짓습니다.", "`body`에는 웹 브라우저 화면에 보이는 모든 내용을 씁니다.", "**블록 요소**(`h1`, `p` 등)는 쓸 때마다 새 줄에서 시작하고, **인라인 요소**(`a`, `span` 등)는 공간이 남아 있으면 같은 줄에 이어서 놓입니다.", "감싼 태그와 안쪽 태그는 부모와 **자식**, 부모가 같은 태그끼리는 **형제** 관계입니다. 줄 바꿈과 들여쓰기는 문법 규칙이 아니라 가독성을 높이려는 약속입니다."], "tables": [{"caption": "head 안에서 자주 쓰는 태그", "head": ["태그", "하는 일", "예"], "rows": [["`meta`", "메타데이터 정의(문자 집합, 뷰포트)", "`<meta charset=\"UTF-8\">`"], ["`title`", "문서 제목, 문서마다 1개", "`<title>내 영화 보드<\/title>`"], ["`link`", "외부 파일 연결(외부 스타일 시트, 웹 폰트)", "`<link rel=\"stylesheet\" href=\"style.css\">`"], ["`style`", "내부 스타일 시트 작성", "`<style>p{color:red;}<\/style>`"], ["`script`", "자바스크립트 작성(Part 3에서 배움)", "`<script><\/script>`"]]}], "pairs": [["블록 요소", "인라인 요소", "블록은 늘 새 줄에서 시작하고, 인라인은 공간이 남으면 같은 줄에 이어집니다."], ["태그", "요소", "요소는 시작 태그, 콘텐츠, 종료 태그를 모두 합친 것입니다."]], "short": "2장"}, {"id": "ch3", "part": "Part 1", "title": "3장 실무에서 자주 사용하는 HTML 필수 태그 다루기", "lead": "실무에서 자주 쓰는 태그와 속성을 목적별로 정리한 장입니다. `a`, `img`, 시맨틱 태그, 글로벌 속성의 비중이 큽니다.", "points": ["`h1`~`h6`은 제목을 나타내며 숫자가 작을수록 중요하고 크게 보입니다. `h1`부터 단계를 건너뛰지 않고 씁니다.", "`p`는 문단, `br`은 줄 바꿈입니다. 코드에서 줄을 바꿔도 화면에서는 한 줄로 이어지므로, 줄을 바꾸려면 `br`을 씁니다.", "`div`는 블록 요소와 인라인 요소를 묶고, `span`은 인라인 요소를 묶습니다. 둘 다 스타일을 주지 않으면 화면에 변화가 없습니다.", "`ul`은 순서 없는 목록(글머리 기호), `ol`은 순서 있는 목록(번호)이며, 목록 항목은 `li`로 씁니다.", "`dl`은 용어와 설명을 나열하는 정의형 목록으로, 용어는 `dt`, 설명은 `dd`로 씁니다.", "`a` 태그는 링크를 만들며 이동할 대상 경로를 `href`에 씁니다. 교재는 `href`를 꼭 쓰는 속성, `target`과 `title`을 골라 쓰는 속성으로 설명합니다.", "`target` 값에는 `_blank`, `_parent`, `_self`, `_top`이 있으며, 새 창으로 여는 `_blank`를 빼면 거의 쓰지 않습니다.", "주소가 아직 정해지지 않았으면 `href=\"#\"`을 넣습니다. `href=\"#board\"`처럼 `#` 뒤에 id 값을 쓰면 같은 문서 안의 그 요소로 이동합니다.", "`a`의 `title` 속성에는 링크를 설명하는 텍스트를 넣으며, 마우스를 올리면 툴팁으로 보입니다.", "`img`는 이미지를 넣는 빈 태그로 `<img src=\"이미지 경로\" alt=\"이미지 설명\">` 형식입니다. 웹 표준은 `src`와 `alt`를 꼭 쓰도록 권고합니다.", "이미지 상대 경로의 기준은 HTML 파일의 위치입니다. `./`는 현재 폴더(생략 가능), `../`는 상위 폴더이며 `../../`처럼 거듭 쓸 수 있습니다.", "**alt**는 이미지를 설명하는 텍스트입니다. 이미지가 깨져 보이면 `src`에 쓴 경로부터 확인합니다.", "`a` 안에 `img`를 넣으면 이미지를 눌러 이동하는 **이미지 링크**가 됩니다.", "`strong`(굵게 보임)과 `em`(기울여 보임)은 텍스트의 의미를 강조하는 태그입니다. `strong`을 중첩하면 더 중요한 내용이라는 뜻이 됩니다.", "`form`의 `action`은 입력값을 보낼 서버 주소, `method`는 전송 방식(`get` 또는 `post`)이며, 폼 요소는 모두 `form` 안에 씁니다.", "`input`은 `type` 값(`text`, `password`, `checkbox`, `radio`, `submit` 등)으로 종류가 정해지고, `label`은 `for` 값을 입력 요소의 `id`와 같게 해서 연결합니다.", "표는 `table` 안에 행 `tr`을 쓰고 그 안에 제목 셀 `th`와 일반 셀 `td`를 씁니다. 표 제목은 `caption`으로 `table` 안 맨 앞에 씁니다.", "`rowspan`은 행끼리, `colspan`은 열끼리 셀을 병합하며 값은 병합할 셀의 개수입니다.", "`audio`와 `video`는 HTML5에서 추가된 멀티미디어 태그이며, `controls` 속성을 넣으면 재생 컨트롤 패널이 보입니다.", "**시맨틱 태그**는 태그 이름만으로 용도나 역할이 분명한 태그입니다. `div`, `span`은 이름에 의미가 없는 논 시맨틱 태그입니다.", "웹 페이지 구조를 설계하는 시맨틱 태그(`header`, `nav`, `section`, `article`, `aside`, `footer`, `main`)는 HTML5에서 새로 추가되었습니다.", "`section`은 페이지 안에서 논리적으로 관련 있는 내용을 묶고, `article`은 어느 페이지에서든 따로 쓰일 수 있는 독립적인 내용을 묶습니다.", "`nav`에는 모든 링크가 아니라 사이트의 주요 탐색 링크만 넣고, `main`에는 문서에서 반복해서 나오는 요소를 넣지 않습니다.", "**글로벌 속성**은 태그 종류와 상관없이 모든 태그에 쓸 수 있는 속성으로, 교재는 `class`, `id`, `style`, `title`, `lang`, `hidden`, `data-*`를 소개합니다.", "`class` 값은 여러 요소가 함께 써도 되지만, `id` 값은 한 문서 안에서 하나뿐이어야 합니다.", "`style`은 인라인 스타일, `lang`은 그 요소 텍스트의 언어(`<p lang=\"de\">`), `hidden`은 요소 감추기, `data-*`는 직접 만드는 사용자 정의 속성입니다."], "tables": [{"caption": "구조를 설계하는 시맨틱 태그", "head": ["태그", "나타내는 영역"], "rows": [["`header`", "헤더 영역: 로고, 검색, 메뉴 등"], ["`nav`", "주요 탐색 링크 영역(메뉴, 목차)"], ["`main`", "문서의 주요 내용(반복 요소는 넣지 않음)"], ["`section`", "논리적으로 관련 있는 내용 영역, 보통 `hn` 제목을 포함"], ["`article`", "독립적으로 쓰일 수 있는 영역"], ["`aside`", "`section`, `article`로 구분하기 어려운 곁가지 영역"], ["`footer`", "푸터 영역: 저작권 정보, 연락처, 사이트 맵"]]}], "pairs": [["`section`", "`article`", "section은 페이지 안의 관련 내용 묶음, article은 따로 떼어 써도 되는 독립 내용입니다."], ["`class`", "`id`", "class 값은 여러 요소가 같이 쓸 수 있고, id 값은 한 문서에 하나뿐입니다."], ["`blockquote`", "`q`", "blockquote는 문단 단위 인용문, q는 문단 안의 짧은 인용문(따옴표로 묶여 보임)입니다."]], "short": "3장"}, {"id": "ch4", "part": "Part 2", "title": "4장 웹 스타일링을 위한 CSS 기초 배우기", "lead": "CSS 문법의 뼈대와 HTML에 CSS를 적용하는 세 가지 방법을 배우는 장입니다.", "points": ["CSS는 **Cascading Style Sheets**의 약자이며, HTML 태그에 스타일을 입히려고 W3C에서 만든 언어입니다.", "CSS 문법은 **선택자**와 **선언부**로 나뉘며, 선언부는 중괄호 `{}` 안에 `속성:값;`을 짝지어 씁니다.", "CSS 주석은 `/* 주석 내용 */`으로 씁니다.", "**내부 스타일 시트**는 HTML 파일 안 `<style>` 태그의 콘텐츠로 CSS를 쓰는 방법이며, `style` 태그는 보통 `head` 안에 둡니다.", "**외부 스타일 시트**는 확장자가 css인 파일을 따로 만들고 `<link rel=\"stylesheet\" href=\"style.css\">`로 연결하는 방법입니다.", "**인라인 스타일**은 `<h1 style=\"color:red;\">`처럼 태그의 `style` 속성에 CSS를 직접 쓰는 방법이라 선택자가 필요 없습니다.", "실무에서는 유지 보수가 편한 외부 스타일 시트를 주로 쓰고, 인라인 스타일은 되도록 쓰지 않습니다."], "tables": [], "pairs": [["`style` 태그", "`style` 속성", "style 태그는 내부 스타일 시트(head 안), style 속성은 인라인 스타일(태그 안)입니다."]], "short": "4장"}, {"id": "ch5", "part": "Part 2", "title": "5장 CSS 선택자 다루기", "lead": "스타일을 줄 대상을 고르는 방법을 배우는 장입니다. 선택자마다 쓰는 기호를 정확히 외우세요.", "points": ["기본 선택자에는 전체 `*`, 태그 `p`, 아이디 `#title`, 클래스 `.red`, 속성 `[href]`, `a[target=\"_blank\"]` 등이 있습니다.", "클래스 선택자는 같은 class 값을 여러 요소에 다시 쓸 수 있어 실무에서 가장 많이 씁니다.", "**조합 선택자**는 기본 선택자와 함께 써서 대상을 더 자세히 고르는 선택자로, 그룹, 자식, 하위, 인접 형제, 일반 형제의 다섯 가지입니다.", "그룹 선택자 `h1, footer`는 쉼표로 묶은 여러 선택자에 같은 스타일을 한 번에 줍니다.", "자식 선택자 `.box > p`는 바로 아래 자식만 고르고, 하위 선택자 `nav a`(공백)는 자식과 그 아래 자손까지 모두 고릅니다.", "인접 형제 선택자 `h1 + h2`는 h1 바로 다음의 형제 h2 하나만, 일반 형제 선택자 `h1 ~ h2`는 h1 뒤에 오는 형제 h2를 모두 고릅니다.", "두 형제 선택자 모두 기준 요소보다 앞에 있는 형제는 고르지 않습니다.", "**가상 요소 선택자**는 HTML에 직접 쓰지 않은 부분을 있는 것처럼 고르며, 콜론 2개 `::`를 붙입니다.", "`::before`는 콘텐츠 앞, `::after`는 콘텐츠 뒤의 공간을 고르며, 이때 `content` 속성으로 새 콘텐츠를 넣습니다.", "`p::after{content:'<after>';}`처럼 넣은 콘텐츠에도 `color` 같은 다른 CSS 속성을 함께 줄 수 있습니다.", "**가상 클래스 선택자**는 요소의 상태로 고르며 콜론 1개 `:`를 씁니다. `:hover`는 마우스를 올렸을 때, `:active`는 누르고 있는 동안, `:focus`는 입력 요소처럼 포커스를 받았을 때(커서가 들어갔을 때)입니다.", "`p:nth-child(2)`는 부모의 두 번째 자식이 p일 때 고르고, `p:nth-of-type(2)`는 p끼리 셌을 때 두 번째 p를 고릅니다.", "선택자는 조합할 수 있습니다. `div.box`는 class가 box인 div, `div:hover > button`은 마우스를 올린 div의 자식 button입니다."], "tables": [{"caption": "선택자 기호 한눈에 보기", "head": ["선택자", "기호", "예", "고르는 대상"], "rows": [["전체", "`*`", "`*{}`", "모든 요소"], ["아이디", "`#`", "`#title`", "id가 title인 요소"], ["클래스", "`.`", "`.card`", "class가 card인 요소"], ["그룹", "`,`", "`h1, footer`", "h1과 footer 모두"], ["자식", "`>`", "`.box > p`", ".box 바로 아래 자식 p"], ["하위", "공백", "`nav a`", "nav 안의 모든 a(자손 포함)"], ["인접 형제", "`+`", "`h1 + h2`", "h1 바로 다음 형제 h2 하나"], ["일반 형제", "`~`", "`h1 ~ h2`", "h1 뒤에 오는 형제 h2 모두"]]}], "pairs": [["자식 선택자 `>`", "하위 선택자(공백)", "`>`는 바로 아래 자식만, 공백은 자손까지 모두 고릅니다."], ["인접 형제 `+`", "일반 형제 `~`", "`+`는 바로 다음 형제 하나, `~`는 뒤에 오는 형제 모두입니다."], ["가상 요소 `::`", "가상 클래스 `:`", "`::before`처럼 없는 부분을 고르면 가상 요소, `:hover`처럼 상태로 고르면 가상 클래스입니다."]], "short": "5장"}, {"id": "ch6", "part": "Part 2", "title": "6장 CSS 필수 속성 다루기", "lead": "가장 분량이 큰 장입니다. 단위, 박스 모델, position, 전환과 변형, 웹 폰트를 중심으로 속성 이름과 값을 정확히 익히세요.", "points": ["HTML 태그 자체에는 꾸밈 기능이 없습니다. `h1`이 크고 굵게 보이는 것은 브라우저에 내장된 **기본 스타일 시트** 때문입니다.", "직접 쓴 스타일은 기본 스타일 시트보다 우선합니다. 한 요소에 스타일이 겹치면 인라인 스타일, 아이디 선택자, 클래스 선택자, 태그 선택자 순으로 우선하고, 우선순위가 같으면 나중에 쓴 것이 적용됩니다.", "**상속**은 부모에 준 스타일(예: `color`)을 자식이 물려받는 현상이며, 모든 속성이 상속되지는 않습니다.", "CSS 단위는 어디서나 같은 크기인 **절대 단위**(`px`)와, 부모나 브라우저 창 크기에 따라 정해지는 **상대 단위**(`%`, `em`, `rem`, `vw`, `vh`)로 나뉩니다.", "글자 크기에 쓴 `em`은 부모의 글자 크기가 기준이라 중첩되면 누적되고(16px의 2em은 32px, 그 자식의 2em은 64px), `rem`은 `html`의 글자 크기(보통 16px)가 기준이라 누적되지 않습니다.", "`1vw`는 뷰포트 너비의 1/100, `1vh`는 뷰포트 높이의 1/100입니다. 뷰포트 너비가 900px이면 `2vw`는 18px입니다.", "`font-family`는 글꼴을 쉼표로 나열해 앞에서부터 적용하며, 맨 끝에 `serif`, `sans-serif` 같은 **글꼴 유형**을 둡니다.", "글자 색은 `color`(`font-color`라는 속성은 없음), 정렬은 `text-align`, 굵기는 `font-weight`(`bold`는 700과 같음)로 지정합니다.", "`text-decoration`은 텍스트에 선을 긋는 속성이며 값은 `none`, `underline`(아래 선), `overline`(위 선), `line-through`(가운데 선)입니다.", "`a`에 밑줄이 있는 것은 기본 스타일 시트가 `text-decoration:underline`을 주기 때문이며, `a{text-decoration:none;}`으로 밑줄을 없앱니다.", "**박스 모델**은 모든 요소가 바깥에서부터 margin, border, padding, content로 이루어진 사각형이라는 개념입니다.", "margin과 padding 값은 공백으로 나눠 씁니다. 4개면 위, 오른쪽, 아래, 왼쪽 순서이고, 3개면 위, 좌우, 아래, 2개면 위아래, 좌우입니다.", "위 요소의 `margin-bottom`과 아래 요소의 `margin-top`이 만나면 더 큰 값 하나로 합쳐집니다(**margin 겹침**). 20px과 30px이면 사이 간격은 50px이 아니라 30px입니다.", "`width`, `height`는 기본으로 content 영역의 크기입니다. 그래서 보이는 너비는 width에 좌우 padding과 좌우 border를 더한 값이고, margin은 들어가지 않습니다.", "`box-sizing`의 기본값은 `content-box`이며, `border-box`로 바꾸면 width, height가 border와 padding까지 포함한 크기가 됩니다.", "블록 성격(`div`, `p`)은 가로 한 줄을 다 차지하고, 인라인 성격(`span`, `a`)은 콘텐츠만큼만 차지하며 width, height와 위아래 margin이 적용되지 않습니다. `display`의 `block`, `inline`, `inline-block`으로 성격을 바꿉니다.", "`background-image:url('이미지 경로')`로 배경 이미지를 넣으며, 요소가 이미지보다 크면 이미지가 반복되므로 `background-repeat:no-repeat`로 반복을 끕니다.", "`background-size`에서 `auto`는 원래 크기, `cover`는 비율을 지키며 요소를 꽉 채우고(일부가 잘릴 수 있음), `contain`은 비율을 지키며 한쪽이 가득 찰 때까지만 키워 이미지 전체가 요소 안에 들어갑니다.", "`background-size:80px 60px`처럼 너비와 높이를 직접 줄 수도 있으며, `cover`는 `background-position:center`와 함께 쓰면 이미지가 가운데에 놓여 보기 좋습니다.", "`position` 값은 `static`(기본값, 기본 흐름대로), `relative`, `absolute`, `fixed`, `sticky`이며, `top`, `right`, `bottom`, `left`로 위치를 정합니다.", "`relative`는 원래 자리를 기준으로 움직이며, 움직여도 원래 자리의 공간이 그대로 남습니다.", "`absolute`는 기본 흐름에서 빠져 원래 공간이 비고, position이 static이 아닌 가장 가까운 조상(보통 `relative`를 준 부모)을 기준으로 놓입니다. 그런 조상이 없으면 페이지 왼쪽 위가 기준입니다.", "`fixed`는 스크롤해도 화면의 같은 위치에 고정되고, `sticky`는 기본 흐름대로 있다가 지정한 위치에 닿으면 고정됩니다. 겹친 요소는 `z-index` 값이 클수록 앞에 보입니다.", "`float:left`(또는 `right`)는 요소를 띄워 한쪽에 붙이고 뒤의 텍스트가 주변을 흐르게 합니다. 해제할 때는 다음 요소에 `clear`(`left`, `right`, `both`)를 줍니다.", "**전환**(transition)은 속성값이 바뀔 때 서서히 변하게 하며, `transition-property`로 대상 속성을, `transition-duration`으로 지속 시간을, `transition-delay`로 시작 지연을 정합니다.", "`transition-timing-function`은 진행 속도를 정합니다. 값에 따라 끝나는 시각은 같고 중간 속도만 다르며, 직접 정하려면 `cubic-bezier()`를 씁니다.", "애니메이션은 `@keyframes`로 시점별 스타일(`from`은 0%, `to`는 100%)을 정의하고 `animation-name`, `animation-duration`으로 실행합니다. 기본 1회 실행 뒤 원래 상태로 돌아가며, `animation-fill-mode:forwards`는 끝 상태 유지, `animation-iteration-count:infinite`는 무한 반복입니다.", "`transform`은 요소 자체를 변형합니다. `translate()`는 이동, `scale()`은 크기 바꾸기, `rotate()`는 회전, `skew()`는 기울이기입니다.", "`translate`는 양수면 오른쪽과 아래로, 음수면 왼쪽과 위로 움직이므로 `translateY(-8px)`은 위로 8px 이동입니다. `scale(2)`는 2배 확대, `rotate(30deg)`는 오른쪽으로 30도 회전입니다.", "변형의 기본 기준점은 요소의 중심이며, `transform-origin:top left;`처럼 `transform-origin`으로 기준점을 바꿉니다.", "**웹 폰트**는 웹 서버에 올려 둔 글꼴로, 사용자 컴퓨터에 없어도 모두 같은 글꼴로 보입니다. 구글 폰트는 `link` 태그나 `@import` 문으로 불러오며, `@import`는 `style` 태그나 CSS 파일 맨 위에 둡니다.", "**아이콘 폰트**(Font Awesome 등)는 아이콘을 글자처럼 쓰는 기술입니다. 텍스트로 취급되므로 `font-size`, `color`로 크기와 색을 바꾸고, CDN `link` 코드는 `head` 안에 넣습니다."], "tables": [{"caption": "margin, padding 값 개수에 따른 방향", "head": ["값 개수", "예", "적용"], "rows": [["1개", "`margin:10px;`", "네 방향 모두 10px"], ["2개", "`margin:10px 20px;`", "위아래 10px, 좌우 20px"], ["3개", "`margin:10px 20px 30px;`", "위 10px, 좌우 20px, 아래 30px"], ["4개", "`margin:10px 20px 30px 40px;`", "위 10px, 오른쪽 20px, 아래 30px, 왼쪽 40px"]]}, {"caption": "transition-timing-function 값", "head": ["값", "진행 속도"], "rows": [["`linear`", "처음부터 끝까지 일정"], ["`ease`", "점점 빨라지다가 중간부터 점점 느려짐"], ["`ease-in`", "처음에는 느리고 끝으로 갈수록 빨라짐"], ["`ease-out`", "처음에는 빠르고 끝으로 갈수록 느려짐"], ["`ease-in-out`", "느리게 시작해 빨라졌다가 다시 느려짐"], ["`cubic-bezier(p1, p2, p3, p4)`", "사용자가 정의한 속도"]]}], "pairs": [["`em`", "`rem`", "em은 부모 글자 크기 기준이라 중첩되면 누적되고, rem은 html 글자 크기 기준이라 누적되지 않습니다."], ["`content-box`", "`border-box`", "content-box는 width가 content만, border-box는 width가 padding과 border까지 포함합니다."], ["`cover`", "`contain`", "cover는 꽉 채우되 일부가 잘릴 수 있고, contain은 전체가 보이되 빈 곳이 생길 수 있습니다."], ["`relative`", "`absolute`", "relative는 원래 자리 기준이고 공간이 남으며, absolute는 흐름에서 빠지고 position이 있는 조상 기준입니다."]], "short": "6장"}, {"id": "ch7", "part": "Part 2", "title": "7장 효과적인 레이아웃을 위한 CSS 속성 다루기", "lead": "플렉스 박스, 그리드, 미디어 쿼리로 레이아웃과 반응형 웹을 만드는 장입니다. 정렬 속성이 어느 방향으로 정렬하는지 꼭 구분하세요.", "points": ["**플렉스 박스**는 가로(row)나 세로(column) 한 방향으로 배치하는 1차원 레이아웃이고, **그리드**는 행과 열을 함께 쓰는 2차원 레이아웃입니다. 둘 다 CSS3에서 추가되었습니다.", "`display:flex`(또는 `inline-flex`)를 준 요소는 플렉스 컨테이너, 그 자식은 플렉스 아이템이 됩니다. 아이템은 원래의 블록, 인라인 성격이 무시되고 기본으로 가로로 나란히 놓입니다.", "`flex-direction`은 아이템을 놓는 방향을 정하며 값은 `row`(기본값, 왼쪽에서 오른쪽), `row-reverse`, `column`(위에서 아래), `column-reverse`입니다.", "`flex-wrap`의 기본값은 `nowrap`(줄 바꿈 없음)이고 `wrap`이면 넘치는 아이템을 다음 줄로 보냅니다. `flex-flow:column nowrap;`처럼 두 속성을 한 번에 쓸 수 있습니다.", "`justify-content`는 flex-direction 방향으로 아이템을 정렬하며 값은 `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`입니다.", "`space-between`은 양 끝 아이템을 끝에 붙이고 사이 간격을 똑같이, `space-around`는 아이템 둘레 간격을 똑같이, `space-evenly`는 사이와 양 끝 간격을 모두 똑같이 합니다.", "`align-items`는 flex-direction과 수직인 방향으로 정렬하며 기본값은 `stretch`입니다. 그래서 `display:flex`만 줘도 아이템이 컨테이너 높이만큼 늘어납니다.", "`align-self`는 아이템 하나만 따로 정렬하고, `align-content`는 `flex-wrap:wrap`으로 여러 줄이 된 아이템을 정렬합니다.", "그리드에서 행과 열이 만나 이루는 한 칸을 **그리드 셀**, 셀 사이 간격을 그리드 갭, 행과 열을 그리는 선을 그리드 라인이라고 합니다.", "`display:grid`를 준 요소가 그리드 컨테이너가 되고, `grid-template-columns`로 열, `grid-template-rows`로 행의 크기를 `grid-template-columns:100px auto;`처럼 공백으로 나눠 씁니다.", "`repeat(2, 100px)`는 `100px 100px`과 같고, `minmax(10px, 100px)`는 최소 10px, 최대 100px입니다. `repeat(2, minmax(50px, 100px))`처럼 함께 쓸 수 있으며, 간격은 `row-gap`, `column-gap`으로 줍니다.", "그리드 셀 안의 정렬은 `align-items`(세로), `justify-items`(가로)로 하고, 아이템 하나만은 `align-self`, `justify-self`로 합니다. `place-items:center end;`는 세로 center, 가로 end입니다.", "`grid-template-areas`로 컨테이너의 행과 열에 이름을 붙이고, 아이템에 `grid-area:header;`처럼 그 이름을 지정해 배치합니다.", "그리드 라인 번호로도 배치합니다. `grid-column:1/3;`은 1번 라인부터 3번 라인까지(2칸)로 `grid-column:1/span 2;`와 같고, 행은 `grid-row`로 씁니다.", "**뷰포트**는 기기에서 웹 페이지가 보이는 실제 영역입니다. 뷰포트 설정이 없으면 모바일 브라우저는 980px 너비를 기준으로 그려 글씨가 아주 작게 보입니다.", "`<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">`에서 `width=device-width`는 문서 너비를 기기 너비로, `initial-scale=1.0`은 처음 배율을 1배로 정합니다.", "**미디어 쿼리**는 `@media`로 시작하며, 미디어 타입(`all`, `print`, `screen`, `speech`)을 생략하면 `all`이고, 미디어 타입을 쓰면 뒤에 반드시 `and`를 씁니다.", "`@media only screen and (min-width:360px) and (max-width:720px){}`는 screen 기기에서 뷰포트 너비가 360px 이상 720px 이하일 때 적용됩니다. `min-width`는 그 값 이상, `max-width`는 그 값 이하이며 둘 다 그 값을 포함합니다."], "tables": [{"caption": "플렉스 박스 속성 한눈에 보기", "head": ["속성", "하는 일", "값"], "rows": [["`display:flex`", "플렉스 컨테이너 만들기", "자식이 플렉스 아이템이 됨"], ["`flex-direction`", "아이템을 놓는 방향", "`row`(기본값), `row-reverse`, `column`, `column-reverse`"], ["`flex-wrap`", "넘칠 때 줄 바꿈", "`nowrap`(기본값), `wrap`, `wrap-reverse`"], ["`justify-content`", "flex-direction 방향 정렬", "`flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`"], ["`align-items`", "그와 수직인 방향 정렬(전체)", "`stretch`(기본값), `flex-start`, `flex-end`, `center`, `baseline`"], ["`align-self`", "그와 수직인 방향 정렬(아이템 하나)", "align-items와 같음"], ["`align-content`", "여러 줄일 때 줄들의 정렬", "`flex-wrap:wrap`과 함께 씀"]]}, {"caption": "미디어 쿼리 문법 조각", "head": ["조각", "뜻"], "rows": [["`@media`", "미디어 쿼리의 시작"], ["`only`", "미디어 쿼리를 지원하는 기기만 해석"], ["`not`", "뒤에 오는 조건 전체를 부정"], ["`all`, `print`, `screen`, `speech`", "미디어 타입(생략하면 `all`)"], ["`and`", "미디어 타입 뒤, 조건과 조건 사이에 씀"], ["`(min-width:600px)`", "뷰포트 너비 600px 이상(600px 포함)"], ["`(max-width:600px)`", "뷰포트 너비 600px 이하(600px 포함)"], ["`(orientation:portrait)`, `(orientation:landscape)`", "세로 모드(높이가 더 큼), 가로 모드(너비가 더 큼)"]]}], "pairs": [["`justify-content`", "`align-items`", "justify-content는 flex-direction 방향, align-items는 그와 수직인 방향으로 정렬합니다."], ["`min-width`", "`max-width`", "min-width:600px은 600px 이상, max-width:600px은 600px 이하이며 둘 다 600px을 포함합니다."], ["`grid-template-areas`", "`grid-area`", "grid-template-areas는 컨테이너에 영역 이름을 정하고, grid-area는 아이템에 그 이름을 지정합니다."]], "short": "7장"}], "code": [{"title": "6주차 index.html", "lines": [{"code": "<!DOCTYPE html>", "note": "문서를 HTML5 형식으로 해석하게 하는 선언, 항상 맨 처음(2.2.1)"}, {"code": "<html lang=\"ko\">", "note": "문서의 시작과 끝, lang으로 주 언어를 한국어로 지정(2.2.2, 3.10)"}, {"code": "<head>", "note": "메타데이터를 정의하는 영역 시작(2.2.3)"}, {"code": "  <meta charset=\"UTF-8\">", "note": "문자 집합을 UTF-8로 지정(2.2.3)"}, {"code": "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">", "note": "뷰포트 너비를 기기 너비로, 처음 배율을 1로 지정(2.2.3, 7.3.2)"}, {"code": "  <title>내 영화 보드<\/title>", "note": "문서 제목, 문서마다 1개(2.2.3)"}, {"code": "  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">", "note": "구글 폰트 서버에 미리 연결해 두는 preconnect (교재 밖 문법)"}, {"code": "  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>", "note": "글꼴 파일 서버에 미리 연결하는 preconnect와 crossorigin (교재 밖 문법)"}, {"code": "  <link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap\" rel=\"stylesheet\">", "note": "구글 폰트 Noto Sans KR을 link 태그로 불러오는 웹 폰트(6.9.1)"}, {"code": "  <link rel=\"stylesheet\" href=\"style.css\">", "note": "외부 스타일 시트 style.css 연결(4.2.2)"}, {"code": "<\/head>", "note": ""}, {"code": "<body>", "note": "화면에 보이는 내용을 쓰는 영역(2.2.4)"}, {"code": "  <h1>내 영화 보드<\/h1>", "note": "가장 중요한 제목(3.1.1)"}, {"code": "  <article class=\"card\">", "note": "독립적인 영역을 나타내는 시맨틱 태그, class로 CSS 대상 지정(3.9.4, 3.10)"}, {"code": "    <img class=\"poster\" src=\"https://image.tmdb.org/t/p/w342/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg\" alt=\"인터스텔라 포스터\">", "note": "src는 이미지 경로, alt는 이미지 설명 텍스트(3.4.2)"}, {"code": "    <span class=\"badge\">8.4<\/span>", "note": "평점 배지, 인라인 요소를 묶는 span(3.2.2)"}, {"code": "    <div class=\"info\">", "note": "제목과 설명을 묶는 div(3.2.1)"}, {"code": "      <h2>인터스텔라<\/h2>", "note": "카드 제목(3.1.1)"}, {"code": "      <p class=\"year\">2014<\/p>", "note": "개봉 연도 문단, class로 스타일 대상 지정(3.1.2)"}, {"code": "      <p class=\"overview\">세계 각국의 정부와 경제가 완전히 붕괴된 미래가 다가온다.<\/p>", "note": "줄거리 문단(3.1.2)"}, {"code": "    <\/div>", "note": ""}, {"code": "  <\/article>", "note": ""}, {"code": "  <footer>", "note": "푸터 영역: 저작권, 출처 정보(3.9.6)"}, {"code": "    <p>이 사이트는 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지 않았습니다.", "note": "문단 시작(3.1.2)"}, {"code": "       This product uses the TMDB API but is not endorsed or certified by TMDB.<\/p>", "note": "p 안에서 바꾼 코드 줄은 화면에서 한 줄로 이어짐(3.1.3)"}, {"code": "    <p>포스터와 영화 정보: TMDB (https://www.themoviedb.org)<\/p>", "note": "출처를 밝히는 문단(3.1.2)"}, {"code": "  <\/footer>", "note": ""}, {"code": "<\/body>", "note": ""}, {"code": "<\/html>", "note": ""}]}, {"title": "6주차 style.css", "lines": [{"code": "body {", "note": "body를 고르는 태그 선택자(5.1.2)"}, {"code": "  background: linear-gradient(135deg, #141e30, #243b55);", "note": "background로 배경 지정(6.4.7), 두 색이 이어지는 linear-gradient (교재 밖 문법)"}, {"code": "  min-height: 100vh;", "note": "최소 높이를 뷰포트 높이 100vh(6.1.4)로 잡는 min-height (교재 밖 문법)"}, {"code": "  box-sizing: border-box;", "note": "padding과 border를 width, height 안에 포함해 계산(6.3.4)"}, {"code": "  margin: 0;", "note": "브라우저 기본 margin을 없앰(6.3.1)"}, {"code": "  padding: 40px;", "note": "네 방향 안쪽 여백 40px(6.3.3)"}, {"code": "  font-family: \"Noto Sans KR\", sans-serif;", "note": "웹 폰트 지정, 공백 있는 글꼴명은 따옴표, 맨 끝에 글꼴 유형 sans-serif(6.2.1, 6.9.1)"}, {"code": "}", "note": ""}, {"code": "h1, footer { color: #fff; }", "note": "그룹 선택자로 h1과 footer 글자를 흰색 #fff로(5.2.1, 6.1.5)"}, {"code": "", "note": ""}, {"code": ".card {", "note": "class가 card인 요소를 고르는 클래스 선택자(5.1.4)"}, {"code": "  width: 260px;", "note": "content 너비 260px(6.3.4)"}, {"code": "  border-radius: 12px;", "note": "모서리를 둥글게 하는 border-radius (교재 밖 문법)"}, {"code": "  overflow: hidden;", "note": "박스 밖으로 넘치는 부분을 감추는 overflow (교재 밖 문법)"}, {"code": "  box-shadow: 0 4px 12px rgba(0,0,0,0.3);", "note": "rgba 투명도 0.3 검정(6.1.5)으로 그림자를 그리는 box-shadow (교재 밖 문법)"}, {"code": "  background: #fff;", "note": "배경을 흰색으로(6.4.7)"}, {"code": "  position: relative;", "note": "자식 .badge의 absolute 기준이 되도록 relative(6.5.1)"}, {"code": "  transition: transform 0.3s, box-shadow 0.3s;", "note": "transform 값이 바뀔 때 0.3s 동안 서서히 전환(6.6), 같은 방식으로 전환하는 box-shadow (교재 밖 문법)"}, {"code": "}", "note": ""}, {"code": ".info { padding: 12px 16px; }", "note": "padding 값 2개: 위아래 12px, 좌우 16px(6.3.3)"}, {"code": ".poster { width: 100%; display: block; aspect-ratio: 2 / 3; object-fit: cover; }", "note": "부모 너비 100%(6.1.4), 블록으로 바꿈(6.3.5), 2:3 비율 aspect-ratio와 잘라 채우는 object-fit (교재 밖 문법)"}, {"code": ".badge {", "note": "class가 badge인 요소 선택(5.1.4)"}, {"code": "  position: absolute; top: 12px; right: 12px;", "note": "relative 부모 .card의 위에서 12px, 오른쪽에서 12px 지점에 배치(6.5.1)"}, {"code": "  background: #ffc107; color: #222;", "note": "배경 노란색, 글자 어두운 회색 HEX(6.1.5)"}, {"code": "  padding: 4px 10px; border-radius: 999px; font-weight: bold;", "note": "padding 위아래 4px, 좌우 10px(6.3.3), 굵게 bold(6.2.3), 양 끝을 둥글게 border-radius (교재 밖 문법)"}, {"code": "}", "note": ""}, {"code": ".card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(255,193,7,0.6); }", "note": "마우스를 올리면(:hover 5.4.2) 위로 8px 이동(translateY 6.8.1), 그림자를 키우는 box-shadow (교재 밖 문법)"}]}, {"title": "7주차 index.html", "lines": [{"code": "<!DOCTYPE html>", "note": "문서를 HTML5 형식으로 해석하게 하는 선언(2.2.1)"}, {"code": "<html lang=\"ko\">", "note": "문서의 시작, 주 언어 한국어(2.2.2, 3.10)"}, {"code": "<head>", "note": "메타데이터 영역 시작(2.2.3)"}, {"code": "  <meta charset=\"UTF-8\">", "note": "문자 집합 UTF-8(2.2.3)"}, {"code": "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">", "note": "뷰포트를 기기 너비에 맞춤, 미디어 쿼리가 기기 너비대로 동작하는 바탕(7.3.2)"}, {"code": "  <title>내 영화 보드<\/title>", "note": "문서 제목(2.2.3)"}, {"code": "  <link rel=\"stylesheet\" href=\"style.css\">", "note": "외부 스타일 시트 연결(4.2.2)"}, {"code": "<\/head>", "note": ""}, {"code": "<body>", "note": "화면에 보이는 내용 영역(2.2.4)"}, {"code": "  <header class=\"top\">", "note": "헤더 영역 시맨틱 태그, class top은 플렉스 대상(3.9.1)"}, {"code": "    <h1>내 영화 보드<\/h1>", "note": "사이트 제목(3.1.1)"}, {"code": "    <nav>", "note": "주요 탐색 링크 영역(3.9.2)"}, {"code": "      <ul>", "note": "순서 없는 목록(3.3.1)"}, {"code": "        <li><a href=\"#board\">보드<\/a><\/li>", "note": "#board: id가 board인 요소로 이동하는 문서 안 링크(3.4.1)"}, {"code": "        <li><a href=\"#about\">소개<\/a><\/li>", "note": "#about: id가 about인 소개 영역으로 이동(3.4.1)"}, {"code": "        <li><a href=\"detail.html\">상세<\/a><\/li>", "note": "같은 폴더의 detail.html 문서로 이동하는 상대 경로 링크(3.4.1)"}, {"code": "      <\/ul>", "note": ""}, {"code": "    <\/nav>", "note": ""}, {"code": "  <\/header>", "note": ""}, {"code": "  <section class=\"hero\">", "note": "논리적으로 관련 있는 내용 영역, 배경 이미지를 깔 hero(3.9.3)"}, {"code": "    <h2>요즘 내가 고른 영화 다섯 편<\/h2>", "note": "영역 제목(3.1.1)"}, {"code": "    <p>포스터 위에 마우스를 올려 보세요.<\/p>", "note": "안내 문단(3.1.2)"}, {"code": "  <\/section>", "note": ""}, {"code": "  <main>", "note": "페이지의 주요 내용 영역(3.9.7)"}, {"code": "    <section class=\"board\" id=\"board\">", "note": "카드 보드 영역, id는 문서에서 하나뿐이라 링크 목적지로 씀(3.9.3, 3.10)"}, {"code": "      <article class=\"card\">", "note": "독립적인 카드 하나를 나타내는 article(3.9.4)"}, {"code": "        <img class=\"poster\"", "note": "img 시작, 속성을 여러 줄로 나눠 써도 됨(3.4.2)"}, {"code": "             src=\"https://image.tmdb.org/t/p/w342/poster1.jpg\"", "note": "src: 이미지 경로(3.4.2)"}, {"code": "             alt=\"인터스텔라 포스터\">", "note": "alt: 이미지 설명 텍스트, 이미지 태그 끝(3.4.2)"}, {"code": "        <span class=\"badge\">8.4<\/span>", "note": "평점 배지, 인라인 요소를 묶는 span(3.2.2)"}, {"code": "        <div class=\"info\">", "note": "제목과 설명을 묶는 div(3.2.1)"}, {"code": "          <h2>인터스텔라<\/h2>", "note": "영화 제목(3.1.1)"}, {"code": "          <p class=\"year\">2014<\/p>", "note": "개봉 연도 문단(3.1.2)"}, {"code": "          <p class=\"overview\">우주로 떠난 아버지와 딸의 약속.<\/p>", "note": "줄거리 문단(3.1.2)"}, {"code": "        <\/div>", "note": ""}, {"code": "      <\/article>", "note": ""}, {"code": "      <!-- 같은 구조의 카드 4장(기생충, 쇼생크 탈출, 어벤져스: 엔드게임, 센과 치히로의 행방불명)은 생략 -->", "note": "카드 다섯 장은 영화 값만 다르고 구조가 같습니다. 직접 쓸 때는 첫 카드 하나를 정확히 쓰면 됩니다."}, {"code": "    <\/section>", "note": ""}, {"code": "    <section id=\"about\">", "note": "소개 영역, nav의 #about 링크 목적지(3.9.3, 3.4.1)"}, {"code": "      <h2>이 보드에 대하여<\/h2>", "note": "소개 영역 제목(3.1.1)"}, {"code": "      <p>만든 사람과 영화를 고른 기준을 한두 문장으로 적습니다.<\/p>", "note": "소개 문단(3.1.2)"}, {"code": "      <p>포스터와 영화 정보는 TMDB 검색 결과를 그대로 옮겼습니다.<\/p>", "note": "출처 문단(3.1.2)"}, {"code": "    <\/section>", "note": ""}, {"code": "  <\/main>", "note": ""}, {"code": "  <footer>", "note": "푸터 영역: 저작권, 출처 정보(3.9.6)"}, {"code": "    <p>이 사이트는 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지 않았습니다.", "note": "문단 시작(3.1.2)"}, {"code": "       This product uses the TMDB API but is not endorsed or certified by TMDB.<\/p>", "note": "p 안에서 바꾼 코드 줄은 화면에서 한 줄로 이어짐(3.1.3)"}, {"code": "    <p>포스터와 영화 정보: TMDB (https://www.themoviedb.org)<\/p>", "note": "출처를 밝히는 문단(3.1.2)"}, {"code": "  <\/footer>", "note": ""}, {"code": "<\/body>", "note": ""}, {"code": "<\/html>", "note": ""}]}, {"title": "7주차 style.css", "lines": [{"code": "body {", "note": "body 선택(5.1.2)"}, {"code": "  margin: 0; padding: 16px; min-height: 100vh;", "note": "기본 margin 없앰(6.3.1), 안쪽 여백 16px(6.3.3), 최소 높이 100vh(6.1.4)의 min-height (교재 밖 문법)"}, {"code": "  background: linear-gradient(135deg, #141e30, #243b55);", "note": "배경을 두 색 그라데이션으로 칠하는 linear-gradient (교재 밖 문법)"}, {"code": "  font-family: \"Noto Sans KR\", sans-serif;", "note": "공백 있는 글꼴명은 따옴표, 맨 끝에 글꼴 유형 sans-serif(6.2.1)"}, {"code": "  color: #f5f5f5;", "note": "글자색 밝은 회색, body의 color는 자식에게 상속(6.2.6, 6.1.3)"}, {"code": "}", "note": ""}, {"code": "h1 { color: #fff; }", "note": "h1 글자 흰색, #fff는 #ffffff를 줄여 쓴 HEX(6.1.5)"}, {"code": ".card {", "note": "class가 card인 요소 선택(5.1.4)"}, {"code": "  position: relative; border-radius: 12px; overflow: hidden;", "note": ".badge의 absolute 기준이 되는 relative(6.5.1), 모서리 둥글게 border-radius, 넘침 감추기 overflow (교재 밖 문법)"}, {"code": "  background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);", "note": "배경 흰색(6.4.7), rgba 투명도 0.3 검정(6.1.5)으로 그리는 box-shadow (교재 밖 문법)"}, {"code": "  transition: transform 0.3s, box-shadow 0.3s;", "note": "transform 값이 바뀔 때 0.3s 동안 서서히 전환(6.6), 같은 방식으로 전환하는 box-shadow (교재 밖 문법)"}, {"code": "  color: #222;", "note": "카드 글자는 어둡게: body에서 물려받은 색을 덮어씀(6.1.3, 6.2.6)"}, {"code": "}", "note": ""}, {"code": ".card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(255,193,7,0.6); }", "note": "마우스를 올리면(:hover 5.4.2) 위로 8px 이동(translateY 6.8.1), 그림자를 키우는 box-shadow (교재 밖 문법)"}, {"code": ".poster { width: 100%; display: block; aspect-ratio: 2 / 3; object-fit: cover; }", "note": "부모 너비 100%(6.1.4), 블록으로 바꿈(6.3.5), 2:3 비율 aspect-ratio와 잘라 채우는 object-fit (교재 밖 문법)"}, {"code": ".badge { position: absolute; top: 12px; right: 12px; padding: 4px 10px;", "note": "relative 부모 .card의 오른쪽 위에서 12px씩 떨어져 배치(6.5.1), padding 위아래 4px, 좌우 10px(6.3.3)"}, {"code": "  border-radius: 999px; background: #f5c518; color: #222; font-weight: bold; }", "note": "배경 노란색(6.1.5), 굵게 bold(6.2.3), 양 끝을 둥글게 border-radius (교재 밖 문법)"}, {"code": ".info { padding: 12px; }", "note": "네 방향 안쪽 여백 12px(6.3.3)"}, {"code": ".top { display: flex; justify-content: space-between; align-items: center; }", "note": "header를 플렉스 컨테이너로(7.1.2): space-between으로 h1과 nav를 양 끝에, align-items:center로 세로 가운데(7.1.3)"}, {"code": "nav ul { display: flex; flex-direction: column; gap: 8px; list-style: none; margin: 0; padding: 0; }", "note": "nav 안의 ul(하위 선택자 5.2.3)을 플렉스로, 기본은 세로 column(7.1.2), 글머리 기호 없앰 list-style:none(6장 셀프체크), 간격 gap (교재 밖 문법)"}, {"code": "nav a { color: #fff; text-decoration: none; }", "note": "메뉴 링크 흰색, 기본 밑줄 없앰 text-decoration:none(6.2.8)"}, {"code": ".board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }", "note": "그리드 컨테이너(7.2.2), repeat()와 minmax()로 최소 200px 열 반복(7.2.2), 칸 수 자동 조절 auto-fit, 남는 공간 비율 1fr, 칸 사이 gap (교재 밖 문법)"}, {"code": ".hero { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(\"https://image.tmdb.org/t/p/w1280/backdrop1.jpg\"); background-size: cover; background-position: center; min-height: 40vh; padding: 24px; box-sizing: border-box; color: #fff; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; }", "note": "배경 이미지를 cover로 꽉 채우고 가운데 배치(6.4.4, 6.4.5), box-sizing:border-box(6.3.4), 플렉스 column에서 justify-content:center는 세로 가운데(7.1.2, 7.1.3), 어둡게 덮는 linear-gradient와 min-height, border-radius (교재 밖 문법)"}, {"code": "main, .top, .hero, footer { max-width: 1100px; margin: 0 auto 24px; }", "note": "그룹 선택자(5.2.1), margin 값 3개: 위 0, 좌우 auto(가운데 정렬), 아래 24px(6.3.1, 6.3.4), 최대 너비 max-width (교재 밖 문법)"}, {"code": "@media (min-width: 600px) { nav ul { flex-direction: row; gap: 20px; } }", "note": "뷰포트 너비 600px 이상(600px 포함)이면 메뉴를 가로 row로(7.3.3, 7.1.2), 간격 gap (교재 밖 문법)"}, {"code": "@media (min-width: 1024px) { .hero { min-height: 60vh; } .hero h2 { font-size: 3rem; } }", "note": "뷰포트 너비 1024px 이상이면 .hero h2를 3rem(보통 48px, 6.1.4)으로 키움(7.3.3), 높이를 늘리는 min-height (교재 밖 문법)"}]}], "essays": [{"topic": "시맨틱 태그의 뜻과 쓰는 까닭", "q": "시맨틱 태그가 무엇인지 설명하고, 웹 페이지 구조를 시맨틱 태그로 설계하면 무엇이 좋은지 예를 들어 쓰세요.", "keys": ["시맨틱 태그: 태그 이름만으로 용도나 역할이 분명한 태그(시맨틱 = 의미론적)", "논 시맨틱 태그 `div`, `span`과 비교: 이름에 의미가 없어 구조를 알아보기 어려움", "HTML5 구조용 태그: `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`", "쓰는 까닭: 사람뿐 아니라 브라우저, 검색 엔진 같은 기계도 구조와 의미를 이해함(시맨틱 웹)", "예: 7주차 코드의 `header` 안 `nav`, `main` 안 `section`과 `article`, 맨 아래 `footer`"], "ref": "3.9"}, {"topic": "박스 모델과 box-sizing", "q": "박스 모델의 네 영역을 설명하고, `width:100px; padding:10px; border:1px solid black; margin:10px;`인 요소가 화면에 보이는 너비를 box-sizing 값에 따라 계산하세요.", "keys": ["박스 모델: 모든 요소는 바깥에서부터 margin(외부 여백), border(테두리), padding(내부 여백), content(내용)로 된 사각형", "content-box(기본값): 보이는 너비 = width + 좌우 padding + 좌우 border, margin은 넣지 않음", "계산 예: 100 + 10 + 10 + 1 + 1 = 122px로 보임(높이도 같은 방식)", "border-box: 보이는 너비 = width, padding과 border가 width 안에 들어가고 content가 그만큼 줄어듦", "계산 예: `box-sizing:border-box`면 100px로 보임, margin은 어느 경우든 보이는 크기에 넣지 않음"], "ref": "6.3, 6.3.4"}, {"topic": "조합 선택자 다섯 가지", "q": "조합 선택자 다섯 가지의 기호와 고르는 대상을 쓰고, 예시 선택자로 차이를 설명하세요.", "keys": ["그룹 선택자 `,`: `h1, footer`처럼 여러 선택자에 같은 스타일을 한 번에 줌", "자식 선택자 `>`: `.box > p`는 .box 바로 아래 자식 p만 고름", "하위 선택자(공백): `nav a`는 nav 안의 자식과 자손 a를 모두 고름", "인접 형제 선택자 `+`: `h1 + h2`는 h1 바로 다음 형제 h2 하나만 고름", "일반 형제 선택자 `~`: `h1 ~ h2`는 h1 뒤에 오는 형제 h2를 모두 고름(두 형제 선택자 모두 앞쪽 형제는 고르지 않음)"], "ref": "5.2"}, {"topic": "반응형 웹과 뷰포트, 미디어 쿼리", "q": "반응형 웹을 만들 때 뷰포트 메타 태그가 필요한 까닭을 쓰고, `@media (min-width:600px){ }` 안의 스타일이 언제 적용되는지 설명하세요.", "keys": ["반응형 웹: 접속한 기기의 화면 크기(해상도)에 따라 알맞은 스타일이 적용되는 웹, 주요 기술이 미디어 쿼리", "뷰포트: 기기에서 웹 페이지가 보이는 실제 영역, 설정이 없으면 모바일 브라우저가 980px 기준으로 그려 글씨가 작게 보임", "`<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">`: 문서 너비를 기기 너비로, 처음 배율 1", "미디어 쿼리 문법: `@media` + 미디어 타입(생략하면 all, 쓰면 뒤에 and) + `(조건)`", "`min-width:Npx`은 뷰포트 너비 Npx 이상(그 값 포함), `max-width:Npx`은 Npx 이하(그 값 포함)일 때 적용"], "ref": "7.3.2, 7.3.3"}, {"topic": "CSS를 적용하는 세 가지 방법", "q": "CSS를 HTML 문서에 적용하는 세 가지 방법을 작성 위치와 형식으로 비교하고, 실무에서 주로 쓰는 방법과 그 까닭을 쓰세요.", "keys": ["내부 스타일 시트: HTML 문서 안 `<style>` 태그(보통 `head` 안)에 작성, 그 문서에만 적용", "외부 스타일 시트: 확장자가 css인 파일을 따로 만들고 `<link rel=\"stylesheet\" href=\"style.css\">`로 연결", "인라인 스타일: 태그의 `style` 속성에 직접 작성, 선택자가 필요 없음", "실무: 여러 문서가 한 CSS 파일을 함께 쓰고 고치기 쉬운 외부 스타일 시트를 주로 씀", "인라인 스타일은 구조(HTML)와 디자인(CSS)이 섞여 관리가 어려우므로 되도록 쓰지 않음"], "ref": "4.2"}, {"topic": "transition과 animation의 차이", "q": "전환(transition)과 애니메이션(animation)의 공통점과 차이를 설명하고, 각각 지정해야 하는 핵심 속성을 쓰세요.", "keys": ["공통점: 둘 다 CSS3에서 추가, 속성값이 시간에 따라 서서히 바뀌는 효과", "transition: 상태가 바뀔 때(예: `:hover`) 처음 값에서 바뀐 값으로 변함, `transition-property`와 `transition-duration`", "animation: `@keyframes`로 0%(from)부터 100%(to)까지 여러 시점의 스타일을 정의, `animation-name`과 `animation-duration`", "animation만 가능: 반복(`animation-iteration-count`, `infinite`), 일시 정지(`animation-play-state:paused`), 방향(`animation-direction`)", "끝난 뒤: 애니메이션은 기본으로 실행 전 상태로 돌아가고, `animation-fill-mode:forwards`면 끝 상태를 유지"], "ref": "6.6, 6.7"}, {"topic": "블록 요소와 인라인 요소, display 속성", "q": "블록 요소와 인라인 요소의 차이를 설명하고, `display` 속성으로 성격을 바꾸는 예를 쓰세요.", "keys": ["블록: 늘 새 줄에서 시작해 가로 한 줄을 다 차지, width, height, margin, padding이 모두 적용(예: `div`, `p`, `h1`)", "인라인: 콘텐츠만큼만 차지하고 같은 줄에 이어짐, width, height와 위아래 margin이 적용되지 않음(예: `span`, `a`, `strong`)", "인라인 블록: 콘텐츠만큼 차지하면서 width, height, margin, padding이 모두 적용", "`display` 값 `block`, `inline`, `inline-block`으로 성격을 바꿈(예: `a{display:inline-block;}`, `img{display:block;}`)", "`display:flex`, `display:grid`도 display 값이며, 자식을 플렉스 아이템, 그리드 아이템으로 만듦"], "ref": "2.3.1, 6.3.5"}, {"topic": "플렉스 박스와 그리드 레이아웃 비교", "q": "플렉스 박스 레이아웃과 그리드 레이아웃을 비교하고, 각각 어떤 배치에 알맞은지 7주차 코드를 예로 설명하세요.", "keys": ["플렉스 박스: 1차원 레이아웃(가로 row 또는 세로 column 한 방향), `display:flex`", "그리드: 2차원 레이아웃(행과 열을 함께), `display:grid`, `grid-template-columns`, `grid-template-rows`", "공통점: 컨테이너에 display를 주면 자식이 아이템이 됨, 둘 다 CSS3에서 추가", "플렉스 정렬: `justify-content`는 flex-direction 방향, `align-items`는 그와 수직인 방향", "예: 7주차 `.top`, `nav ul`은 한 줄로 늘어놓는 메뉴라 플렉스, `.board`는 카드를 행과 열로 놓아 그리드"], "ref": "7.1, 7.2"}], "cards": [{"q": "문서의 문자 집합을 UTF-8로 정하는 태그는?", "a": "`<meta charset=\"UTF-8\">`", "ref": "2.2.3"}, {"q": "링크를 새 창으로 여는 target 값은?", "a": "`_blank`", "ref": "3.4.1"}, {"q": "img 태그에 꼭 쓰도록 권고하는 두 속성은?", "a": "`src`(이미지 경로), `alt`(이미지 설명)", "ref": "3.4.2"}, {"q": "HTML 파일의 상위 폴더를 뜻하는 경로 기호는?", "a": "`../` (현재 폴더는 `./`)", "ref": "3.4.2"}, {"q": "주요 탐색 링크 영역을 나타내는 시맨틱 태그는?", "a": "`nav`", "ref": "3.9.2"}, {"q": "한 문서 안에서 값이 하나뿐이어야 하는 글로벌 속성은?", "a": "`id` (`class`는 여러 요소가 함께 씀)", "ref": "3.10"}, {"q": "외부 CSS 파일을 연결하는 코드는?", "a": "`<link rel=\"stylesheet\" href=\"style.css\">`", "ref": "4.2.2"}, {"q": "인라인 스타일은 CSS를 어디에 쓰나요?", "a": "태그의 `style` 속성", "ref": "4.2.3"}, {"q": "하위 선택자의 구분 기호는?", "a": "공백 (자식 선택자는 `>`)", "ref": "5.2.3"}, {"q": "콘텐츠 앞에 새 콘텐츠를 넣는 가상 요소와 함께 쓰는 속성은?", "a": "`::before`와 `content`", "ref": "5.3"}, {"q": "html 글자 크기가 16px일 때 2rem은?", "a": "32px", "ref": "6.1.4"}, {"q": "링크 밑줄을 없애는 선언은?", "a": "`text-decoration:none;`", "ref": "6.2.8"}, {"q": "`margin:10px 20px 30px;`의 왼쪽 margin은?", "a": "20px (오른쪽과 같음)", "ref": "6.3.1"}, {"q": "box-sizing의 기본값은?", "a": "`content-box`", "ref": "6.3.4"}, {"q": "absolute 요소는 무엇을 기준으로 놓이나요?", "a": "position이 static이 아닌 가장 가까운 조상(보통 relative 부모), 없으면 페이지", "ref": "6.5.1"}, {"q": "요소를 위로 8px 옮기는 transform 값은?", "a": "`translateY(-8px)`", "ref": "6.8.1"}, {"q": "flex-direction의 기본값은?", "a": "`row`", "ref": "7.1.2"}, {"q": "양 끝 아이템을 끝에 붙이고 사이 간격을 똑같이 하는 justify-content 값은?", "a": "`space-between`", "ref": "7.1.3"}, {"q": "`repeat(3, 100px)`와 같은 값은?", "a": "`100px 100px 100px`", "ref": "7.2.2"}, {"q": "뷰포트 너비 600px 이상에서만 적용되는 미디어 쿼리는?", "a": "`@media (min-width:600px){ }`", "ref": "7.3.3"}]}</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // `code` 표기를 <code>로
+  const rich = s => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+
+  // 01 시험 구성
+  $('#examRows').innerHTML = D.exam.map(r => `<tr><td><strong>${esc(r.type)}</strong></td><td class="num">${esc(r.n)}</td><td class="num">${esc(r.pt)}</td><td>${rich(r.how)}</td></tr>`).join('');
+
+  // 02 계획
+  const done = store.get('wd-plan', {});
+  $('#planList').innerHTML = D.plan.map((s, i) => `<div class="step card"><div class="time">${esc(s.time)}</div><div><h3>${esc(s.title)}</h3><ul>${
+    s.do.map((t, j) => { const id = `p${i}_${j}`; return `<li><label for="${id}"><input type="checkbox" id="${id}" ${done[id] ? 'checked' : ''}><span>${rich(t)}</span></label></li>`; }).join('')
+  }</ul></div></div>`).join('');
+  $('#planList').addEventListener('change', e => { if (e.target.type === 'checkbox') { done[e.target.id] = e.target.checked; store.set('wd-plan', done); } });
+
+  // 03 장 요약
+  $('#chapNav').innerHTML = D.chapters.map(c => `<a href="#${esc(c.id)}">${esc(c.short || c.title.split(' ')[0])}</a>`).join('');
+  $('#chapters').innerHTML = D.chapters.map(c => {
+    const tables = (c.tables || []).map(t => `<div class="tbl"><table><caption>${esc(t.caption)}</caption><thead><tr>${t.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(x => `<td>${rich(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`).join('');
+    const pairs = (c.pairs || []).length ? `<div class="label">헷갈리기 쉬운 짝</div><div class="pairs">${c.pairs.map(p => `<div class="pair"><div class="a">${rich(p[0])}</div><div class="b">${rich(p[1])}</div><div class="d">${rich(p[2])}</div></div>`).join('')}</div>` : '';
+    return `<article class="chap" id="${esc(c.id)}"><div class="head"><h3>${esc(c.title)}</h3><span class="part">${esc(c.part)}</span></div>${c.lead ? `<p class="lead">${rich(c.lead)}</p>` : ''}<ul class="points">${c.points.map(p => `<li>${rich(p)}</li>`).join('')}</ul>${tables}${pairs}</article>`;
+  }).join('');
+
+  // 04 코드
+  function hl(line, kind) {
+    let s = esc(line);
+    if (kind === 'html') {
+      s = s.replace(/(&lt;!--.*?--&gt;)/g, '<span class="t-com">$1</span>');
+      s = s.replace(/(&lt;\/?)([a-zA-Z!][\w-]*)/g, '$1<span class="t-tag">$2</span>');
+      s = s.replace(/\s([a-zA-Z-]+)=(&quot;.*?&quot;)/g, ' <span class="t-attr">$1</span>=<span class="t-str">$2</span>');
+    } else {
+      s = s.replace(/(\/\*.*?\*\/)/g, '<span class="t-com">$1</span>');
+      s = s.replace(/([a-z-]+)(\s*:\s)/g, '<span class="t-prop">$1</span>$2');
+      s = s.replace(/^([^{:]*?)(\s*\{)/, (m, a, b) => /^\s/.test(a) ? m : `<span class="t-sel">${a}</span>${b}`);
+      s = s.replace(/(&quot;.*?&quot;)/g, '<span class="t-str">$1</span>');
+    }
+    return s;
+  }
+  let cur = store.get('wd-code', 0);
+  if (!(cur >= 0 && cur < D.code.length)) cur = 0;
+  function drawCode() {
+    const f = D.code[cur];
+    const kind = /\.css/.test(f.title) ? 'css' : 'html';
+    $('#codeBox').innerHTML = f.lines.map((l, i) => `<div class="cl${l.note ? ' has' : ''}"><span class="ln">${i + 1}</span><pre tabindex="-1">${hl(l.code, kind) || ' '}</pre><div class="nt">${rich(l.note || '')}</div></div>`).join('');
+    [...$('#codeTabs').children].forEach((b, i) => b.setAttribute('aria-pressed', String(i === cur)));
+    $('#codeHint').textContent = `${f.lines.length}줄`;
+  }
+  $('#codeTabs').innerHTML = D.code.map((f, i) => `<button type="button" aria-pressed="false" data-i="${i}">${esc(f.title)}</button>`).join('');
+  $('#codeTabs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cur = +b.dataset.i; store.set('wd-code', cur); drawCode(); });
+  drawCode();
+  const box = $('#codeBox');
+  $('#toggleNotes').addEventListener('click', e => { const on = box.classList.toggle('hide-notes'); e.target.setAttribute('aria-pressed', String(on)); e.target.textContent = on ? '설명 보이기' : '설명 숨기기'; });
+  $('#toggleBlur').addEventListener('click', e => { const on = box.classList.toggle('blur-code'); e.target.setAttribute('aria-pressed', String(on)); e.target.textContent = on ? '코드 보이기' : '코드 가리기'; });
+
+  // 05 서술형
+  $('#essays').innerHTML = D.essays.map((s, i) => `<div class="essay card"><h3><span class="k">후보 ${i + 1}</span>${esc(s.topic)}</h3><p>${rich(s.q)}</p><button type="button" aria-expanded="false" data-i="${i}">핵심어 보기</button><ul hidden id="ek${i}">${s.keys.map(k => `<li>${rich(k)}</li>`).join('')}</ul><div class="ref">교재: ${esc(s.ref)}</div></div>`).join('');
+  $('#essays').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const ul = $('#ek' + b.dataset.i); ul.hidden = !ul.hidden; b.setAttribute('aria-expanded', String(!ul.hidden)); b.textContent = ul.hidden ? '핵심어 보기' : '핵심어 접기'; });
+
+  // 06 카드
+  const seen = store.get('wd-cards', {});
+  $('#cardList').innerHTML = D.cards.map((c, i) => `<button type="button" class="qc${seen[i] ? ' open' : ''}" data-i="${i}" aria-expanded="${seen[i] ? 'true' : 'false'}"><span class="q">${rich(c.q)}</span><span class="tap">눌러서 답 보기</span><span class="a" ${seen[i] ? '' : 'hidden'}>${rich(c.a)}</span><span class="r">${esc(c.ref || '')}</span></button>`).join('');
+  function score() { const n = Object.values(seen).filter(Boolean).length; $('#cardScore').textContent = `확인한 카드 ${n} / ${D.cards.length}`; }
+  function setCard(b, open) { const i = b.dataset.i; b.classList.toggle('open', open); b.setAttribute('aria-expanded', String(open)); b.querySelector('.a').hidden = !open; seen[i] = open; }
+  $('#cardList').addEventListener('click', e => { const b = e.target.closest('.qc'); if (!b) return; setCard(b, !b.classList.contains('open')); store.set('wd-cards', seen); score(); });
+  $('#openAll').addEventListener('click', () => { document.querySelectorAll('.qc').forEach(b => setCard(b, true)); store.set('wd-cards', seen); score(); });
+  $('#closeAll').addEventListener('click', () => { document.querySelectorAll('.qc').forEach(b => setCard(b, false)); store.set('wd-cards', seen); score(); });
+  score();
+
+  // 탭 강조
+  const links = [...document.querySelectorAll('#tabs a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  function onScroll() { let k = 0; secs.forEach((s, i) => { if (s.getBoundingClientRect().top < 120) k = i; }); links.forEach((a, i) => a.classList.toggle('on', i === k)); }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+
+</body></html>
